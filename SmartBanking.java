@@ -19,7 +19,8 @@ public class SmartBanking{
         final String EXIT = "Exit";
 
         String screen = DASHBOARD;
-        String[] names = new String[0];
+        String[] accountNames = new String[0];
+        int[] deposits = new int[0];
 
 
         do{
@@ -57,7 +58,38 @@ public class SmartBanking{
 
                     break;
 
-                
+                    case OPEN_NEW_ACCOUNT:
+                    System.out.printf("\nNew Student ID: SDB-%05d \n",(accountNames.length+1));
+
+                    boolean valid;
+                    String name;
+                    do{
+                        valid = true;
+                        System.out.print("Enter Account Holder's Name: ");
+                        name = scanner.nextLine().strip();
+                        if (name.isBlank()){
+                            System.out.printf("%sName can't be empty%s\n", red_bold, reset);
+                            valid = false;
+                            continue;
+                        }
+                        for (int i = 0; i < name.length(); i++) {
+                            if (!(Character.isLetter(name.charAt(i)) || 
+                                Character.isSpaceChar(name.charAt(i))) ) {
+                                System.out.printf("%sInvalid Name%s\n", red_bold, reset);
+                                valid = false;
+                                break;
+                            }
+                        }
+                    }while(!valid);
+                    
+                    String[] newAccountNames = new String[accountNames.length + 1];
+                    for (int i = 0; i < accountNames.length; i++) {
+                        newAccountNames[i] = accountNames[i];
+                    }
+                    newAccountNames[newAccountNames.length -1] = name;
+                    accountNames = newAccountNames;
+
+                    
 
                 }
 
