@@ -111,6 +111,14 @@ public class SmartBanking{
                     deposits = newDeposits;
 
 
+                    System.out.println();
+                    System.out.printf("SDB-%05d : %s added sucessfully.\nDo you want to add new student (Y/n)? ",(accountNames.length),name);
+                    if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
+                    screen = DASHBOARD;
+                    break;
+
+                    default: System.exit(0);
+
                 }
 
         }while(true);
