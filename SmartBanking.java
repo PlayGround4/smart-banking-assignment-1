@@ -89,7 +89,27 @@ public class SmartBanking{
                     newAccountNames[newAccountNames.length -1] = name;
                     accountNames = newAccountNames;
 
-                    
+                    int deposit;
+                    do{
+                        valid = true;
+                        System.out.print("Enter Initial Deposit Value: ");
+                        deposit = scanner.nextInt();
+                        scanner.nextLine();
+                        if (!(deposit>5000)){
+                            System.out.printf("%sInsufficient Amount%s\n", red_bold, reset);
+                            valid = false;
+                            continue;
+                        }
+                        
+                    }while(!valid);
+
+                    int[] newDeposits = new int[deposits.length+1];
+                    for (int i = 0; i < deposits.length; i++) {
+                        newDeposits[i] = deposits[i];
+                    }
+                    newDeposits[newDeposits.length-1] = deposit;
+                    deposits = newDeposits;
+
 
                 }
 
