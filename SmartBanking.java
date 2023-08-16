@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class SmartBanking {
@@ -23,6 +24,7 @@ public class SmartBanking {
     String screen = DASHBOARD;
     String[] accountNames = new String[0];
     int[] deposits = new int[0];
+    String[] idArray = new String[0];
 
     do {
       final String APP_TITLE = String.format(
@@ -86,6 +88,15 @@ public class SmartBanking {
             (accountNames.length + 1)
           );
 
+          String[] newIDArray = new String[idArray.length+1];
+
+          for (int i = 0; i < idArray.length; i++) {
+            newIDArray[i] = idArray[i];
+          }
+
+          newIDArray[newIDArray.length-1] = String.format("SDB-%05d",(accountNames.length+1));
+          idArray=newIDArray;
+
           boolean valid;
           String name;
           do {
@@ -147,6 +158,10 @@ public class SmartBanking {
           if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
           screen = DASHBOARD;
           break;
+
+          case DEPOSITS:
+
+
         default:
           System.exit(0);
       }
